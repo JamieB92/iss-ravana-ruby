@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'room_map'
 class Game
   def initialize
     intro
@@ -42,6 +43,18 @@ class Game
   end
 
   def start_game
-    
+    @current_room_name = :cryo
+    @current_room = ROOM_MAP[:cryo]
+
+    puts "Welcome #{@player.name} to the ISS Ravana, you find yourself in the #{@current_room_name} room."
+    enter_room
+  end
+
+  def enter_room
+    if !@current_room[:item].nil?
+      puts "You enter #{@current_room_name.to_s.capitalize} and see #{@current_room[:item]} in the room."
+    else
+      puts "You enter #{@current_room_name.to_s.capitalize} and see nothing in the room."
+    end
   end
 end
