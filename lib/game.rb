@@ -1,3 +1,4 @@
+require_relative 'player'
 class Game
   def initialize
     intro
@@ -35,7 +36,9 @@ class Game
   end
 
   def player
-    
+    puts "What is your name?"
+    player = gets.chomp
+    @player = Player.new(player)
   end
 
   def start_game
