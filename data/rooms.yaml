@@ -1,0 +1,155 @@
+# USCSS Nostromo - Room Map
+# Alien Franchise Text Adventure
+#
+# Item gating (items needed to defeat):
+#   Facehugger (Maintenance Tunnels) : 2
+#   Chestburster (Quarantine Zone)   : 5
+#   Xenomorph Drone (Engine Room)    : 7
+#   Xenomorph Queen (Escape Bay)     : 8  — drops stasis_pod_code on defeat
+
+
+cryo_bay:
+  description: "Rows of cryo tubes line the walls, frost still clinging to the glass. Yours is the only one open."
+  exits:
+    east: hypersleep_corridor
+  item: pulse_rifle
+  alien: ~
+
+hypersleep_corridor:
+  description: "A long, dimly lit corridor connecting the cryo bay to the rest of the ship. Something has scratched the walls."
+  exits:
+    west: cryo_bay
+    east: mess_hall
+    north: cargo_hold
+    south: maintenance_tunnels
+  item: ~
+  alien: ~
+
+cargo_hold:
+  description: "Massive cargo containers are stacked to the ceiling. Several have been torn open from the inside."
+  exits:
+    south: hypersleep_corridor
+    east: weapons_locker
+  item: welding_torch
+  alien: ~
+
+weapons_locker:
+  description: "A reinforced room with empty weapon racks. Most of the gear is gone — but not all."
+  exits:
+    west: cargo_hold
+  item: flamethrower
+  alien: ~
+
+mess_hall:
+  description: "Trays of cold food still sit on the tables. A chair has been knocked over. Nobody finished their meal."
+  exits:
+    west: hypersleep_corridor
+    east: server_room
+    north: armory
+  item: med_kit
+  alien: ~
+
+armory:
+  description: "Emergency weapons storage. The motion sensors on the wall are still blinking."
+  exits:
+    south: mess_hall
+  item: motion_tracker
+  alien: ~
+
+server_room:
+  description: "Banks of humming terminals fill the room. MU/TH/UR's interface glows faintly on one screen."
+  exits:
+    west: mess_hall
+    east: comms_array
+  item: ~
+  alien: ~
+
+comms_array:
+  description: "A tangle of antenna equipment and radio gear. Static hisses from every speaker."
+  exits:
+    west: server_room
+    north: observation_deck
+  item: comms_device
+  alien: ~
+
+observation_deck:
+  description: "A domed viewport looks out into the void. You can see the planet below — and something moving on the hull."
+  exits:
+    south: comms_array
+  item: ~
+  alien: ~
+
+maintenance_tunnels:
+  description: "A cramped network of crawl spaces running beneath the ship. The air is hot and smells of copper."
+  exits:
+    north: hypersleep_corridor
+    east: engine_room
+  item: hazmat_suit
+  alien:
+    name: Facehugger
+    items_required: 2
+    description: "A pale, spider-like creature drops from the ceiling. You hear it before you see it."
+
+engine_room:
+  description: "The ship's massive drives throb and shake the floor. Oil and acid have burned black marks into everything."
+  exits:
+    west: maintenance_tunnels
+    north: research_lab
+    east: quarantine_zone
+    south: captains_quarters
+  item: ~
+  alien:
+    name: Xenomorph Drone
+    items_required: 7
+    description: "A sleek, black form steps out from behind the drive housing. It tilts its head — and charges."
+
+research_lab:
+  description: "Specimen jars and broken equipment litter the benches. Someone was studying something they shouldn't have."
+  exits:
+    south: engine_room
+  item: access_keycard
+  alien: ~
+
+quarantine_zone:
+  description: "Red warning lights pulse slowly. The containment doors have been forced open from the inside."
+  exits:
+    west: engine_room
+  item: ~
+  alien:
+    name: Chestburster
+    items_required: 5
+    description: "A wet, shrieking creature bursts from the shadows. It moves faster than anything its size should."
+
+captains_quarters:
+  description: "The captain's log is still open on the desk. The last entry is just one word: 'Run.'"
+  exits:
+    north: engine_room
+    east: air_lock
+  item: detonator
+  alien: ~
+
+air_lock:
+  description: "A heavy blast door leads to the outer hull. A smaller door leads forward to the bridge."
+  exits:
+    west: captains_quarters
+    east: bridge
+  item: ~
+  alien: ~
+
+bridge:
+  description: "The command centre of the ship. Every screen shows the same thing — a biosign, moving toward you."
+  exits:
+    west: air_lock
+    north: escape_bay
+  item: ~
+  alien: ~
+
+escape_bay:
+  description: "The last escape pod sits in its launch cradle. Something enormous is coiled around it, waiting."
+  exits:
+    south: bridge
+  item: stasis_pod_code  # dropped by Xenomorph Queen on defeat
+  alien:
+    name: Xenomorph Queen
+    items_required: 8
+    description: "She fills the room. Twelve feet of carapace and claws, and she is between you and the only way out."

@@ -1,9 +1,11 @@
 require_relative 'player'
-require_relative 'room_map'
+# require_relative 'room_map'
+require 'yaml'
 class Game
   def initialize
     intro
     player
+    @rooms = YAML.load_file(File.join(__dir__, '..', 'data', 'rooms.yaml'))
     start_game
   end
 
@@ -43,16 +45,16 @@ class Game
   end
 
   def start_game
-    @current_room_name = :cryo
-    @current_room = ROOM_MAP[:cryo]
+    @current_room_name = "cryo_bay"
+    @current_room = @rooms["cryo_bay"]
 
     puts "Welcome #{@player.name} to the ISS Ravana, you find yourself in the #{@current_room_name} room."
     enter_room
   end
 
   def enter_room
-    if !@current_room[:item].nil?
-      puts "You enter #{@current_room_name.to_s.capitalize} and see #{@current_room[:item]} in the room."
+    if !@current_room["item"].nil?
+      puts "You enter #{@current_room_name.to_s.capitalize} and see #{@current_room["item"]} in the room."
     else
       puts "You enter #{@current_room_name.to_s.capitalize} and see nothing in the room."
     end
