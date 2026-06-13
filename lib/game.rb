@@ -4,7 +4,7 @@ class Game
   def initialize
     intro
     player
-    game_state
+    initialise_game
     @rooms = YAML.load_file(File.join(__dir__, '..', 'data', 'rooms.yaml'))
     start_game
 
@@ -62,7 +62,7 @@ class Game
   end
 
   def player_input
-    gets.chomp.downcase
+    gets.chomp
   end
 
   def player
@@ -72,8 +72,8 @@ class Game
     @player = Player.new(player)
   end
 
-  def game_state
-    @game_state = false
+  def initialise_game
+    @game_on = true
   end
 
   def start_game
@@ -88,9 +88,9 @@ class Game
   end
 
   def game_loop
-    while @game_state == false
+    while @game_on == true
       puts "What is your next move?"
-      return @game_state = true if player_input == "quit"
+      return @game_on = false if player_input.downcase == "quit"
     end
   end
 
