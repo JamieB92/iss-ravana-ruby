@@ -4,10 +4,8 @@ class Game
   def initialize
     intro
     player
-    game_state
     @rooms = YAML.load_file(File.join(__dir__, '..', 'data', 'rooms.yaml'))
     start_game
-
   end
 
   def intro
@@ -61,19 +59,11 @@ class Game
   puts "  > "
   end
 
-  def player_input
-    gets.chomp.downcase
-  end
-
   def player
     puts "\n  > SURVIVOR IDENTIFICATION REQUIRED"
     puts "    Enter your name, soldier: "
-    player = player_input
+    player = gets.chomp
     @player = Player.new(player)
-  end
-
-  def game_state
-    @game_state = false
   end
 
   def start_game
@@ -84,14 +74,6 @@ class Game
     puts "    Survivor designation: #{@player.name.upcase}"
     puts "    Current location: #{@current_room_name.upcase}"
     enter_room
-    game_loop
-  end
-
-  def game_loop
-    while @game_state == false
-      puts "What is your next move?"
-      return @game_state = true if player_input == "quit"
-    end
   end
 
   def enter_room
