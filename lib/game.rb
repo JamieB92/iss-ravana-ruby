@@ -90,7 +90,13 @@ class Game
   def game_loop
     while @game_on == true
       puts "What is your next move?"
-      return @game_on = false if player_input.downcase == "quit"
+      input = player_input.downcase.split
+
+      return @game_on = false if input[0] == "quit"
+
+      if input[0] == "go" && @current_room["exits"]
+        move_room(input)
+      end
     end
   end
 
@@ -101,6 +107,17 @@ class Game
     else
       puts "\n  > ENTERING #{@current_room_name.upcase}"
       puts "    SCAN COMPLETE -- NO OBJECTS DETECTED"
+    end
+  end
+
+  def move_room(input)
+    if @current_room["exits"].key?(input[1])
+      new_room_name = @current_room["exits"][input[1]]
+      @current_room_name = new_room_name
+      @current_room = @rooms[new_room_name]
+      enter_room
+    else
+      puts "You can't go that way"
     end
   end
 end
