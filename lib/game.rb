@@ -1,7 +1,10 @@
 require_relative 'player'
 require_relative 'intro'
+require_relative 'room_movement'
 require 'yaml'
 class Game
+  include RoomMovement
+  
   def initialize
     Intro.intro_text
     player
@@ -47,27 +50,6 @@ class Game
       if input[0] == "go" && @current_room["exits"]
         move_room(input)
       end
-    end
-  end
-
-  def enter_room
-    if !@current_room["item"].nil?
-      puts "\n  > ENTERING #{@current_room_name.upcase}"
-      puts "    SCAN COMPLETE -- OBJECT DETECTED: #{@current_room["item"].upcase}"
-    else
-      puts "\n  > ENTERING #{@current_room_name.upcase}"
-      puts "    SCAN COMPLETE -- NO OBJECTS DETECTED"
-    end
-  end
-
-  def move_room(input)
-    if @current_room["exits"].key?(input[1])
-      new_room_name = @current_room["exits"][input[1]]
-      @current_room_name = new_room_name
-      @current_room = @rooms[new_room_name]
-      enter_room
-    else
-      puts "You can't go that way"
     end
   end
 end
