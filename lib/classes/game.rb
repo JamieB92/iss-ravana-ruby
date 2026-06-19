@@ -46,10 +46,12 @@ class Game
       puts "What is your next move?"
       input = player_input.downcase.split
 
-      return @game_on = false if input[0] == "quit"
-
-      if input[0] == "go" && @current_room["exits"]
+      if input[0] == "go"
         move_room(input)
+      elsif input[0] == "exit"
+        @game_on = false
+      else
+        puts "Computer says no..... please use a correct input"
       end
     end
   end
