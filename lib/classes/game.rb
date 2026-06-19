@@ -1,7 +1,8 @@
-require_relative 'player'
-require_relative 'intro'
-require_relative 'room_movement'
+require_relative '../classes/player'
+require_relative '../modules/intro'
+require_relative '../modules/room_movement'
 require 'yaml'
+
 class Game
   include RoomMovement
   
@@ -9,7 +10,7 @@ class Game
     Intro.intro_text
     player
     initialise_game
-    @rooms = YAML.load_file(File.join(__dir__, '..', 'data', 'rooms.yaml'))
+    @rooms = YAML.load_file(File.join(__dir__, '..', '..', 'data', 'rooms.yaml'))
     start_game
 
   end

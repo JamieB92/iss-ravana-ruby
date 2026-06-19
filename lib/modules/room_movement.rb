@@ -1,4 +1,4 @@
-require_relative 'room'
+require_relative '../classes/room'
 
 module RoomMovement
   def move_room(input)
