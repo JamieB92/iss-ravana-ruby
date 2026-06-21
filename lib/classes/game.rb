@@ -5,6 +5,7 @@ require 'yaml'
 
 class Game
   include RoomMovement
+  include GetRoomItem
   
   def initialize
     Intro.intro_text
@@ -12,7 +13,6 @@ class Game
     initialise_game
     @rooms = YAML.load_file(File.join(__dir__, '..', '..', 'data', 'rooms.yaml'))
     start_game
-
   end
 
   def player_input
@@ -50,9 +50,13 @@ class Game
         move_room(input)
       elsif input[0] == "exit"
         @game_on = false
+      elsif input[0] == "get"
+        pick_up_item(input)
       else
         puts "Computer says no..... please use a correct input"
       end
+
+      puts " Backpack: #{@player.backpack}"
     end
   end
 end
