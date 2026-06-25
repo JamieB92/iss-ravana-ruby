@@ -1,5 +1,5 @@
-require_relative '../classes/room'
-require_relative '../classes/player'
+require_relative 'room'
+require_relative '../player_logic/player'
 
 
 module GetRoomItem

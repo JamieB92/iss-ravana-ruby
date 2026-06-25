@@ -1,6 +1,6 @@
-require_relative '../classes/room'
+require_relative 'room'
 require_relative 'get_room_item'
-require_relative '../classes/player'
+require_relative '../player_logic/player'
 
 module RoomMovement
   def move_room(input)
