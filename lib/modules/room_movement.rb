@@ -14,16 +14,16 @@ module RoomMovement
     end
   end
 
-  def check_for_item_in_backpack
+  def check_room_for_item
     @player.backpack.include?(@current_room["item"])
   end
 
   def enter_room
-    if !@current_room["item"].nil?
-      return puts "\n  > ENTERING #{@current_room_name.upcase} \n SCAN COMPLETE -- NO OBJECTS DETECTED" if check_for_item_in_backpack
-
+    if !@current_room["item"].nil? && check_room_for_item == false
       puts "\n  > ENTERING #{@current_room_name.upcase}"
       puts "    SCAN COMPLETE -- OBJECT DETECTED: #{@current_room["item"].upcase}"
+    elsif !@current_room["item"].nil? && check_room_for_item == true
+      puts "\n  > ENTERING #{@current_room_name.upcase} \n SCAN COMPLETE -- NO OBJECTS DETECTED"
     else
       puts "\n  > ENTERING #{@current_room_name.upcase}"
       puts "    SCAN COMPLETE -- NO OBJECTS DETECTED"
