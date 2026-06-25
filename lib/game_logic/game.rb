@@ -1,6 +1,6 @@
-require_relative '../classes/player'
-require_relative '../modules/intro'
-require_relative '../modules/room_movement'
+require_relative '../player_logic/player'
+require_relative 'intro'
+require_relative '../room_logic/room_movement'
 require 'yaml'
 
 class Game
