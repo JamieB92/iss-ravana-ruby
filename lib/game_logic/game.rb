@@ -1,6 +1,7 @@
 require_relative '../player_logic/player'
 require_relative 'intro'
 require_relative '../room_logic/room_movement'
+require_relative '../alien_logic/alien'
 require 'yaml'
 
 class Game
@@ -12,6 +13,8 @@ class Game
     player
     initialise_game
     @rooms = YAML.load_file(File.join(__dir__, '..', '..', 'data', 'rooms.yaml'))
+    @aliens = YAML.load_file(File.join(__dir__, '..', '..', 'data', 'aliens.yaml'))
+    alien
     start_game
   end
 
@@ -26,6 +29,10 @@ class Game
     @player = Player.new(player)
   end
 
+  def alien
+    @alien = Alien.new("Facehugger", @aliens["Facehugger"]["items_required"], @aliens["Facehugger"]["description"])
+  end
+
   def initialise_game
     @game_on = true
   end
@@ -33,6 +40,9 @@ class Game
   def start_game
     @current_room_name = "cryo_bay"
     @current_room = @rooms["cryo_bay"]
+
+    @alien_current_room_name = "cargo_hold"
+    @alien_current_room = @rooms["cargo_hold"]
 
     puts "\n  > CRYO SEQUENCE TERMINATED"
     puts "    Survivor designation: #{@player.name.upcase}"
