@@ -4,7 +4,7 @@ class Player
   
   def initialize(name)
     @name = name
-    @backpack = []
+    @backpack = ["item", "item", "item", "item", "item", "item", "item", "item", "item", "item"]
   end
 
 end

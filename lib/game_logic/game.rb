@@ -33,6 +33,11 @@ class Game
     @alien = Alien.new("Facehugger", @aliens["Facehugger"]["items_required"], @aliens["Facehugger"]["description"])
   end
 
+  def aliens_health
+    @alien_health = 4
+    @alien_is_alive = true
+  end
+
   def initialise_game
     @game_on = true
   end
@@ -41,8 +46,8 @@ class Game
     @current_room_name = "cryo_bay"
     @current_room = @rooms["cryo_bay"]
 
-    @alien_current_room_name = "cargo_hold"
-    @alien_current_room = @rooms["cargo_hold"]
+    @alien_current_room_name = "cryo_bay"
+    @alien_current_room = @rooms["cryo_bay"]
 
     puts "\n  > CRYO SEQUENCE TERMINATED"
     puts "    Survivor designation: #{@player.name.upcase}"
