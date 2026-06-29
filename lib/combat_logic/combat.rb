@@ -5,7 +5,6 @@ module Combat
   include CombatNarrative
 
   def detect_alien_in_room
-    puts "#{@alien_health.inspect} - In detect_alien_in_room method"
     @alien_current_room_name == @current_room_name
   end
   
