@@ -1,15 +1,11 @@
 Facehugger:
-  items_required: 2
   description: "A pale, spider-like creature drops from the ceiling. You hear it before you see it."
 
 Chestburster:
-  items_required: 5
   description: "A wet, shrieking creature bursts from the shadows. It moves faster than anything its size should."
 
 Xenomorph_Drone:
-  items_required: 7
   description: "A sleek, black form steps out from behind the drive housing. It tilts its head — and charges."
 
 Xenomorph_Queen:
-  items_required: 8
   description: "She fills the room. Twelve feet of carapace and claws, and she is between you and the only way out."

@@ -7,6 +7,7 @@ require 'yaml'
 class Game
   include RoomMovement
   include GetRoomItem
+  include Combat
   
   def initialize
     Intro.intro_text
@@ -30,7 +31,8 @@ class Game
   end
 
   def alien
-    @alien = Alien.new("Facehugger", @aliens["Facehugger"]["items_required"], @aliens["Facehugger"]["description"])
+    @alien = Alien.new("Xenomorph_Drone", @aliens["Xenomorph_Drone"]["description"])
+    @alien_health = 4
   end
 
   def initialise_game
@@ -41,8 +43,8 @@ class Game
     @current_room_name = "cryo_bay"
     @current_room = @rooms["cryo_bay"]
 
-    @alien_current_room_name = "cargo_hold"
-    @alien_current_room = @rooms["cargo_hold"]
+    @alien_current_room_name = "quarantine_zone"
+    @alien_current_room = @rooms[" quarantine_zone"]
 
     puts "\n  > CRYO SEQUENCE TERMINATED"
     puts "    Survivor designation: #{@player.name.upcase}"

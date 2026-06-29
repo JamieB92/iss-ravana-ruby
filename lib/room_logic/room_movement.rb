@@ -2,9 +2,11 @@ require_relative 'room'
 require_relative 'get_room_item'
 require_relative '../player_logic/player'
 require_relative '../alien_logic/alien_movement'
+require_relative '../combat_logic/combat'
 
 module RoomMovement
   include AlienMovement
+  include Combat
 
   def move_room(input)
     if @current_room["exits"].key?(input[1])
@@ -12,7 +14,7 @@ module RoomMovement
       @current_room_name = new_room_name
       @current_room = @rooms[new_room_name]
       enter_room
-      move_room_alien
+      fight || move_room_alien
     else
       puts "You can't go that way"
     end
@@ -23,6 +25,8 @@ module RoomMovement
   end
 
   def enter_room
+    fight
+
     if !@current_room["item"].nil? && check_room_for_item == false
       puts "\n  > ENTERING #{@current_room_name.upcase}"
       puts "    SCAN COMPLETE -- OBJECT DETECTED: #{@current_room["item"].upcase}"
