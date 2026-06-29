@@ -1,7 +1,8 @@
-require_relative '../game_logic/game'
 require_relative '../alien_logic/alien'
+require_relative 'combat_narrative'
 
 module Combat
+  include CombatNarrative
 
   def detect_alien_in_room
     puts "#{@alien_health.inspect} - In detect_alien_in_room method"
@@ -11,20 +12,19 @@ module Combat
   def can_player_defeat_alien
     if @player.backpack.length >= 2 && @alien_health == 4
       @alien_health = 3
-      puts "player defeats alien. The alien scuttles away"
+      fight_encounter_1
     elsif @player.backpack.length >= 5 && @alien_health == 3
-      @alien.health = 2
-      puts "player defeats alien. The alien scuttles away"
+      @alien_health = 2
+      fight_encounter_2
     elsif @player.backpack.length >= 7 && @alien_health == 2
-      @alien.health = 1   
-      puts "player defeats alien. The alien scuttles away"
+      @alien_health = 1
+      fight_encounter_3
     elsif @player.backpack.length >= 8 && @alien_health == 1
-      puts "player defeats alien and dies"
       @alien_health = 0
-      @alien_is_alive = false      
+      @alien_is_alive = false
+      fight_queen
     else
-      puts "#{@alien_health.inspect} - In can_player_defeat else condition"
-      puts "player was defeated by alien"
+      player_defeated
       @game_on = false
     end
   end
