@@ -7,6 +7,7 @@ require 'yaml'
 class Game
   include RoomMovement
   include GetRoomItem
+  include Combat
   
   def initialize
     Intro.intro_text
@@ -31,11 +32,7 @@ class Game
 
   def alien
     @alien = Alien.new("Facehugger", @aliens["Facehugger"]["items_required"], @aliens["Facehugger"]["description"])
-  end
-
-  def aliens_health
     @alien_health = 4
-    @alien_is_alive = true
   end
 
   def initialise_game
