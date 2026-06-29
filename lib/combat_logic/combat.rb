@@ -22,7 +22,7 @@ module Combat
     elsif @player.backpack.length >= 8 && @alien_health == 1
       @alien_health = 0
       @alien_is_alive = false
-      fight_queen
+      fight_encounter_4
     else
       player_defeated
       @game_on = false
