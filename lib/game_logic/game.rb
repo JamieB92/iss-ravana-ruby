@@ -31,7 +31,7 @@ class Game
   end
 
   def alien
-    @alien = Alien.new("Facehugger", @aliens["Facehugger"]["items_required"], @aliens["Facehugger"]["description"])
+    @alien = Alien.new("Xenomorph_Drone", @aliens["Xenomorph_Drone"]["description"])
     @alien_health = 4
   end
 
