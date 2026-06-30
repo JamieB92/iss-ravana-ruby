@@ -2,24 +2,18 @@ require_relative '../room_logic/room'
 require_relative 'alien'
 
 module AlienMovement
-  ALIEN_DIRECTIONS = ["east", "west", "south", "north" ]
-
   def move_room_alien
-    if @alien_is_alive == true
-      alien_moves = ALIEN_DIRECTIONS.sample
-      puts "alien goes to #{alien_moves}"
+    does_alien_move = [true, false]
+    does_it_move = does_alien_move.sample
 
-      if @alien_current_room["exits"].key?(alien_moves)
-        alien_new_room_name = @alien_current_room["exits"][alien_moves]
-        @alien_current_room_name = alien_new_room_name
-        @alien_current_room = @rooms[alien_new_room_name]
-        puts "alien went #{alien_moves} and moved to #{@alien_current_room_name}" 
-      else
-        puts "alien did not leave the room"
-      end
+    if does_it_move == true
+      direction = @alien_current_room["exits"].keys.sample
+      alien_new_room_name = @alien_current_room["exits"][direction]
+      @alien_current_room_name = alien_new_room_name
+      @alien_current_room = @rooms[alien_new_room_name]
+      puts "The alien moved #{direction} and went into #{@alien_current_room_name}"
+    else
+      puts "alien did not move from #{@alien_current_room} "
     end
   end
-
-
-
 end

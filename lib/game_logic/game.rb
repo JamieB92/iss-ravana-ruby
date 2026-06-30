@@ -44,7 +44,7 @@ class Game
     @current_room = @rooms["cryo_bay"]
 
     @alien_current_room_name = "quarantine_zone"
-    @alien_current_room = @rooms[" quarantine_zone"]
+    @alien_current_room = @rooms["quarantine_zone"]
 
     puts "\n  > CRYO SEQUENCE TERMINATED"
     puts "    Survivor designation: #{@player.name.upcase}"
