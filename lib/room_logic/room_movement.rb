@@ -16,6 +16,7 @@ module RoomMovement
       enter_room
       fight || move_room_alien
     else
+      clear_text
       puts "You can't go that way"
     end
   end
@@ -25,6 +26,7 @@ module RoomMovement
   end
 
   def enter_room
+    clear_text
     fight
 
     if !@current_room["item"].nil? && check_room_for_item == false
