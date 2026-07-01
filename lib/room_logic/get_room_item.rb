@@ -6,6 +6,7 @@ module GetRoomItem
   def pick_up_item(input)
     room_item = @current_room["item"]
 
+    clear_text
     if room_item == input[1]
       @player.backpack.push(room_item)
     else

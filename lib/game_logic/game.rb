@@ -19,6 +19,11 @@ class Game
     start_game
   end
 
+  def clear_text
+    print "\e[H\e[2J\e[3J"
+    @clear = system("clear") || system("cls")
+  end
+
   def player_input
     gets.chomp
   end
@@ -43,19 +48,24 @@ class Game
     @current_room_name = "cryo_bay"
     @current_room = @rooms["cryo_bay"]
 
-    @alien_current_room_name = "quarantine_zone"
-    @alien_current_room = @rooms["quarantine_zone"]
+    @alien_current_room_name = "cryo_bay"
+    @alien_current_room = @rooms["cryo_bay"]
 
+    clear_text
     puts "\n  > CRYO SEQUENCE TERMINATED"
     puts "    Survivor designation: #{@player.name.upcase}"
     puts "    Current location: #{@current_room_name.upcase}"
+    sleep(2)
     enter_room
     game_loop
   end
 
   def game_loop
     while @game_on == true
-      puts "What is your next move?"
+      puts "    Backpack: #{@player.backpack}"
+      puts "                                 "
+      puts "    Current location: #{@current_room_name.upcase}"
+      puts "    What is your next move?"
       input = player_input.downcase.split
 
       if input[0] == "go"
@@ -65,10 +75,9 @@ class Game
       elsif input[0] == "get"
         pick_up_item(input)
       else
+        clear_text
         puts "Computer says no..... please use a correct input"
       end
-
-      puts " Backpack: #{@player.backpack}"
     end
   end
 end

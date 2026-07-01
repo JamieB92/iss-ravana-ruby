@@ -13,7 +13,7 @@ module AlienMovement
       @alien_current_room = @rooms[alien_new_room_name]
       puts "The alien moved #{direction} and went into #{@alien_current_room_name}"
     else
-      puts "alien did not move from #{@alien_current_room} "
+      puts "alien did not move from #{@alien_current_room_name} "
     end
   end
 end
