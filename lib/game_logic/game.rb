@@ -1,7 +1,7 @@
 require_relative '../player_logic/player'
 require_relative 'intro'
 require_relative '../room_logic/room_movement'
-require_relative '../alien_logic/alien'
+require_relative '../drone_alien_logic/drone_alien'
 require 'yaml'
 
 class Game
@@ -15,7 +15,7 @@ class Game
     initialise_game
     @rooms = YAML.load_file(File.join(__dir__, '..', '..', 'data', 'rooms.yaml'))
     @aliens = YAML.load_file(File.join(__dir__, '..', '..', 'data', 'aliens.yaml'))
-    alien
+    drone_alien
     start_game
   end
 
@@ -35,9 +35,9 @@ class Game
     @player = Player.new(player)
   end
 
-  def alien
-    @alien = Alien.new("Xenomorph_Drone", @aliens["Xenomorph_Drone"]["description"])
-    @alien_health = 4
+  def drone_alien
+    @drone_alien = DroneAlien.new("Xenomorph_Drone", @aliens["Xenomorph_Drone"]["description"])
+    @drone_alien_health = 4
   end
 
   def initialise_game
@@ -48,8 +48,8 @@ class Game
     @current_room_name = "cryo_bay"
     @current_room = @rooms["cryo_bay"]
 
-    @alien_current_room_name = "cryo_bay"
-    @alien_current_room = @rooms["cryo_bay"]
+    @drone_alien_current_room_name = "cryo_bay"
+    @drone_alien_current_room = @rooms["cryo_bay"]
 
     clear_text
     puts "\n  > CRYO SEQUENCE TERMINATED"
