@@ -1,4 +1,4 @@
-class Alien
+class DroneAlien
   attr_reader :name, :description
 
   def initialize(name, description)

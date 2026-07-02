@@ -1,11 +1,11 @@
 require_relative 'room'
 require_relative 'get_room_item'
 require_relative '../player_logic/player'
-require_relative '../alien_logic/alien_movement'
+require_relative '../drone_alien_logic/drone_alien_movement'
 require_relative '../combat_logic/combat'
 
 module RoomMovement
-  include AlienMovement
+  include DroneAlienMovement
   include Combat
 
   def move_room(input)
@@ -14,7 +14,7 @@ module RoomMovement
       @current_room_name = new_room_name
       @current_room = @rooms[new_room_name]
       enter_room
-      fight || move_room_alien
+      fight || move_room_drone_alien
     else
       clear_text
       puts "You can't go that way"
