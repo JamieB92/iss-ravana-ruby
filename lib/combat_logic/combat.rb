@@ -26,7 +26,8 @@ module Combat
       puts "The Drone's body lies cold on the deck of #{@drone_alien_current_room_name.upcase}. It is not getting back up."    
     else
       player_defeated
-      @game_on = false
+      restart_game
+      clear_text
     end
   end
 
