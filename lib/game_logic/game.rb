@@ -48,8 +48,8 @@ class Game
     @current_room_name = "cryo_bay"
     @current_room = @rooms["cryo_bay"]
 
-    @drone_alien_current_room_name = "cryo_bay"
-    @drone_alien_current_room = @rooms["cryo_bay"]
+    @drone_alien_current_room_name = "quarantine_zone"
+    @drone_alien_current_room = @rooms["quarantine_zone"]
 
     clear_text
     puts "\n  > CRYO SEQUENCE TERMINATED"

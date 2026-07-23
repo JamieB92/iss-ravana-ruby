@@ -22,6 +22,7 @@ cargo_hold:
   exits:
     south: hypersleep_corridor
     east: weapons_locker
+    west: storage_bay
   item: welding_torch
 
 
@@ -32,12 +33,29 @@ weapons_locker:
   item: flamethrower
 
 
+storage_bay:
+  description: "Shelving units line the walls, mostly stripped bare. A few unopened crates remain, still sealed with quarantine tape."
+  exits:
+    east: cargo_hold
+    west: crew_quarters
+  item: ~
+
+
+crew_quarters:
+  description: "Personal effects are scattered across the bunks — photos, half-written letters, a life left mid-sentence."
+  exits:
+    east: storage_bay
+    north: mess_hall
+  item: ~
+
+
 mess_hall:
   description: "Trays of cold food still sit on the tables. A chair has been knocked over. Nobody finished their meal."
   exits:
     west: hypersleep_corridor
     east: server_room
     north: armory
+    south: crew_quarters
   item: med_kit
 
 
@@ -76,6 +94,7 @@ maintenance_tunnels:
   exits:
     north: hypersleep_corridor
     east: engine_room
+    south: quarantine_zone
   item: hazmat_suit
 
 engine_room:
@@ -83,7 +102,6 @@ engine_room:
   exits:
     west: maintenance_tunnels
     north: research_lab
-    east: quarantine_zone
     south: captains_quarters
   item: ~
 
@@ -97,7 +115,7 @@ research_lab:
 quarantine_zone:
   description: "Red warning lights pulse slowly. The containment doors have been forced open from the inside."
   exits:
-    west: engine_room
+    north: maintenance_tunnels
   item: ~
 
 captains_quarters:
