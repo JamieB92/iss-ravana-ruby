@@ -54,7 +54,7 @@ class Game
     clear_text
     puts "\n  > CRYO SEQUENCE TERMINATED"
     puts "    Survivor designation: #{@player.name.upcase}"
-    puts "    Current location: #{@current_room_name.upcase}"
+    puts "    Current location: #{@current_room_name}"
     sleep(2)
     enter_room
     game_loop
@@ -74,10 +74,30 @@ class Game
         @game_on = false
       elsif input[0] == "get"
         pick_up_item(input)
+      elsif input[0] == "restart"
+        restart_game
       else
         clear_text
         puts "Computer says no..... please use a correct input"
       end
     end
+  end
+
+  def restart_game
+      puts "Do you want to restart the game?"
+      puts "Yes or No?"
+
+      input = player_input.downcase.split
+      if input[0] == "yes"
+        clear_text
+        @player.backpack = []
+        @drone_alien_health = 4
+        start_game
+      elsif input[0] == "no"
+        @game_on = false
+      else
+        puts "not the correct input"
+      end
+      clear_text
   end
 end
