@@ -84,6 +84,7 @@ class Game
   end
 
   def restart_game
+      clear_text
       puts "Do you want to restart the game?"
       puts "Yes or No?"
 
@@ -92,12 +93,15 @@ class Game
         clear_text
         @player.backpack = []
         @drone_alien_health = 4
+        clear_text
         start_game
       elsif input[0] == "no"
         @game_on = false
       else
         puts "not the correct input"
+        sleep(2)
+        restart_game
       end
-      clear_text
+
   end
 end
