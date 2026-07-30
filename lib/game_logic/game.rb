@@ -2,12 +2,14 @@ require_relative '../player_logic/player'
 require_relative 'intro'
 require_relative '../room_logic/room_movement'
 require_relative '../drone_alien_logic/drone_alien'
+require_relative '../challenge_logic/load_challenge'
 require 'yaml'
 
 class Game
   include RoomMovement
   include GetRoomItem
   include Combat
+  include LoadRoomChallenge
   
   def initialize
     Intro.intro_text
@@ -48,6 +50,7 @@ class Game
     @current_room_name = "cryo_bay"
     @current_room = @rooms["cryo_bay"]
     @current_room_description = @rooms["cryo_bay"]["description"]
+    @current_room_puzzle = @rooms["cryo_bay"]["room_puzzle"]
 
     @drone_alien_current_room_name = "quarantine_zone"
     @drone_alien_current_room = @rooms["quarantine_zone"]
