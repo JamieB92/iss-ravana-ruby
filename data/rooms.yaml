@@ -2,6 +2,13 @@
 
 cryo_bay:
   description: "Rows of cryo tubes line the walls, frost still clinging to the glass. Yours is the only one open."
+  room_puzzle:
+    - "The tube behind you hisses shut. Frost fog clears from a rack of black steel."
+    - "PULSE RIFLE -- SECURED. IDENTITY VERIFICATION REQUIRED."
+    - "A cracked terminal beside the rack still glows: CREW ROSTER -- CIPHER LOCK: SHIFT 3."
+    - "Names run down the screen, every letter shifted, meaningless at a glance."
+    - "Whoever set this lock trusted only the crew to read it. You are still crew."
+    - "Decode your own name from the roster to prove it."
   exits:
     east: hypersleep_corridor
   item: pulse_rifle
@@ -19,6 +26,12 @@ hypersleep_corridor:
 
 cargo_hold:
   description: "Massive cargo containers are stacked to the ceiling. Several have been torn open from the inside."
+  room_puzzle:
+    - "Crates rise floor to ceiling, numbered in stencil paint. Twelve in total."
+    - "Most sit torn open from the inside -- claws through steel, not tools."
+    - "Three manifest scraps lie scattered nearby, torn and grease-stained."
+    - "Each one crosses out a set of numbers. Cross-reference all three."
+    - "One crate is left unaccounted for. That is the one nothing got to."
   exits:
     south: hypersleep_corridor
     east: weapons_locker
@@ -28,6 +41,12 @@ cargo_hold:
 
 weapons_locker:
   description: "A reinforced room with empty weapon racks. Most of the gear is gone — but not all."
+  room_puzzle:
+    - "Empty racks line the walls -- picked clean, all but one cabinet."
+    - "A keypad blinks beside a reinforced cabinet: 3-DIGIT CODE REQUIRED."
+    - "No note. No manifest. Just three etched marks worn faint beside the keys."
+    - "Whatever the code is, it is not written here -- you have already seen it."
+    - "Somewhere behind you, in rooms already crossed."
   exits:
     west: cargo_hold
   item: flamethrower
@@ -51,6 +70,11 @@ crew_quarters:
 
 mess_hall:
   description: "Trays of cold food still sit on the tables. A chair has been knocked over. Nobody finished their meal."
+  room_puzzle:
+    - "Trays sit cold and untouched. A chair lies knocked over on its side."
+    - "MED KIT -- LOCKER STORAGE, CREW ASSIGNED."
+    - "Placecards, half-burnt, still mark where each crew member sat."
+    - "Work out who was sitting where, and whose locker that leaves you."
   exits:
     west: hypersleep_corridor
     east: server_room
@@ -61,6 +85,11 @@ mess_hall:
 
 armory:
   description: "Emergency weapons storage. The motion sensors on the wall are still blinking."
+  room_puzzle:
+    - "Motion sensors blink along the wall, patient, still watching."
+    - "MOTION TRACKER -- CASING SEALED, CALIBRATION REQUIRED."
+    - "The blinking follows a pattern: short, short, long, short."
+    - "Match it -- move the same rhythm through the room -- and the casing unlocks."
   exits:
     south: mess_hall
   item: motion_tracker
@@ -91,6 +120,11 @@ observation_deck:
 
 maintenance_tunnels:
   description: "A cramped network of crawl spaces running beneath the ship. The air is hot and smells of copper."
+  room_puzzle:
+    - "Crawlspaces branch off in every direction, cramped and reeking of copper."
+    - "HAZMAT SUIT -- VISIBLE THROUGH A GRATE, PAST THE TUNNELS."
+    - "Each route hisses or glows differently as you approach."
+    - "Pick wrong and something in the pipes will not forgive you."
   exits:
     north: hypersleep_corridor
     east: engine_room
@@ -107,6 +141,11 @@ engine_room:
 
 research_lab:
   description: "Specimen jars and broken equipment litter the benches. Someone was studying something they shouldn't have."
+  room_puzzle:
+    - "Specimen jars line the benches, most shattered, one label mostly intact."
+    - "ACCESS KEYCARD -- SEALED, CLEARANCE REQUIRED."
+    - "Half the letters are blacked out on the label, redacted by someone in a hurry."
+    - "What is left still spells something, if you read it in order."
   exits:
     south: engine_room
   item: access_keycard
@@ -120,6 +159,11 @@ quarantine_zone:
 
 captains_quarters:
   description: "The captain's log is still open on the desk. The last entry is just one word: 'Run.'"
+  room_puzzle:
+    - "The captain's log sits open on the desk, screen still lit."
+    - "DETONATOR -- ARMED, SEQUENCE CODE REQUIRED."
+    - "More entries are scattered around the room, torn from a private terminal."
+    - "Read out of order they say nothing. In the right order, they arm the code."
   exits:
     north: engine_room
     east: air_lock
