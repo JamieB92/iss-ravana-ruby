@@ -47,6 +47,7 @@ class Game
   def start_game
     @current_room_name = "cryo_bay"
     @current_room = @rooms["cryo_bay"]
+    @current_room_description = @rooms["cryo_bay"]["description"]
 
     @drone_alien_current_room_name = "quarantine_zone"
     @drone_alien_current_room = @rooms["quarantine_zone"]
@@ -54,7 +55,6 @@ class Game
     clear_text
     puts "\n  > CRYO SEQUENCE TERMINATED"
     puts "    Survivor designation: #{@player.name.upcase}"
-    puts "    Current location: #{@current_room_name}"
     sleep(2)
     enter_room
     game_loop
@@ -62,7 +62,6 @@ class Game
 
   def game_loop
     while @game_on == true
-      puts "    Backpack: #{@player.backpack}"
       puts "                                 "
       puts "    Current location: #{@current_room_name.upcase}"
       puts "    What is your next move?"
