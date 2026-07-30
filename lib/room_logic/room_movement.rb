@@ -3,6 +3,7 @@ require_relative 'get_room_item'
 require_relative '../player_logic/player'
 require_relative '../drone_alien_logic/drone_alien_movement'
 require_relative '../combat_logic/combat'
+require_relative '../challenge_logic/cryo_bay'
 
 module RoomMovement
   include DroneAlienMovement
@@ -32,7 +33,9 @@ module RoomMovement
     if !@current_room["item"].nil? && check_room_for_item == false
       puts "\n  > ENTERING #{@current_room_name.upcase}"
       puts "    #{@current_room_description}"
-      puts "    SCAN COMPLETE -- OBJECT DETECTED: #{@current_room["item"].upcase}"
+      sleep(2)
+      puts "    #{@current_room_puzzle}"
+      get_room_puzzle_logic
     elsif !@current_room["item"].nil? && check_room_for_item == true
       puts "\n  > ENTERING #{@current_room_name.upcase} \n SCAN COMPLETE -- NO OBJECTS DETECTED"
     else
