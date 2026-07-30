@@ -28,7 +28,6 @@ module RoomMovement
 
   def enter_room
     clear_text
-    fight
 
     if !@current_room["item"].nil? && check_room_for_item == false
       puts "\n  > ENTERING #{@current_room_name.upcase}"
