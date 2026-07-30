@@ -13,6 +13,7 @@ module RoomMovement
       new_room_name = @current_room["exits"][input[1]]
       @current_room_name = new_room_name
       @current_room = @rooms[new_room_name]
+      @current_room_description = @rooms[new_room_name]["description"]
       enter_room
       fight || move_room_drone_alien
     else
@@ -31,6 +32,7 @@ module RoomMovement
 
     if !@current_room["item"].nil? && check_room_for_item == false
       puts "\n  > ENTERING #{@current_room_name.upcase}"
+      puts "    #{@current_room_description}"
       puts "    SCAN COMPLETE -- OBJECT DETECTED: #{@current_room["item"].upcase}"
     elsif !@current_room["item"].nil? && check_room_for_item == true
       puts "\n  > ENTERING #{@current_room_name.upcase} \n SCAN COMPLETE -- NO OBJECTS DETECTED"
