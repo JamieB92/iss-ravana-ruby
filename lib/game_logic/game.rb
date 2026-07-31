@@ -104,6 +104,17 @@ class Game
         sleep(2)
         restart_game
       end
+  end
+  def end_game
+    clear_text
+    puts "Do you want to end the game?"
+    puts "Yes or No?"
 
+    input = player_input.downcase.split
+    if input[0] == "yes"
+      @game_on = false
+    elsif input[0] == "no"
+      game_loop
+    end
   end
 end
