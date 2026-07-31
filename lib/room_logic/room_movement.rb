@@ -34,7 +34,7 @@ module RoomMovement
       puts "\n  > ENTERING #{@current_room_name.upcase}"
       puts "    #{@current_room_description}"
       sleep(2)
-      puts "    #{@current_room_puzzle}"
+      puts @current_room_puzzle
       get_room_puzzle_logic
     elsif !@current_room["item"].nil? && check_room_for_item == true
       puts "\n  > ENTERING #{@current_room_name.upcase} \n SCAN COMPLETE -- NO OBJECTS DETECTED"
