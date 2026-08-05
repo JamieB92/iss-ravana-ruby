@@ -29,11 +29,15 @@ module CryoBayChallenge
     input = player_input.downcase
 
     while cryo_bay_chalenge_complete == false
-      if input == cipher_name.join
+      if input == cipher_player_name
         sleep(1)
         clear_text
         puts "    You find : #{@current_room["item"].upcase} and can pick it up"
         cryo_bay_chalenge_complete = true
+      elsif input == "restart"
+        restart_game
+      elsif input == "end"
+        end_game   
       else
         puts "Incorrect, try again"
         input = player_input.downcase
